@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100px;
+}
+
 
 nav {
     display: flex;
@@ -44,7 +48,8 @@ nav {
 .users-todos,
 .info,
 .task,
-.post {
+.post,
+.user-more-info {
     margin-top: 20px;
     margin-left: 20px;
     display: flex;
@@ -56,29 +61,27 @@ nav {
     background: #cbc7c7;
 }
 
+.user-detels{
+    height: fit-content;
+}
+
 #users,
 .todos-section,
-.users-posts{
+.users-posts {
     height: 100vh;
     overflow: hidden;
     overflow-y: scroll;
 }
 
-/* #users,
-.todos-section,
-.users-posts::-webkit-scrollbar{
-    display: none;
-} */
-
 #todos .sections {
-    height: 100vb;
+    height: 80vh;
     display: grid;
     grid-template-rows: 50% 50%;
-    gap: 30px;
+    gap: 60px;
 }
 
 .todos-section,
-.users-posts{
+.users-posts {
     height: 50vh;
 }
 
@@ -96,7 +99,7 @@ nav {
 .user-btn {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
 .proses-btn {
@@ -134,12 +137,12 @@ nav {
     cursor: pointer;
 }
 
-.post header{
+.post header {
     text-align: center;
     background: rgb(60, 60, 152);
     color: white;
 }
 
-.post .post-content{
+.post .post-content {
     text-align: center;
 }
