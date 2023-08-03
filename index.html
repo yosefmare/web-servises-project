@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>users management</title>
+</head>
+
+<body>
+    <div class="content">
+        <div id="users">
+
+            <!-- <users navbar>-->
+            <nav>
+                <div class="nav-tools" style="margin: 70px;">
+                    <input type="text" placeholder="search">
+                </div>
+                <button class="add-btn">Add</button>
+            </nav>
+            <!-- </users navbar>-->
+
+
+            <!-- user info card -->
+            <div class="user-detels">
+                <div class="info">
+                    <label><b>id:</b> <input class="user-id" type="button" value="1"></label>
+                    <label><b>name:</b> <input type="text"></label>
+                    <label><b>email:</b> <input type="text"></label>
+                </div>
+                
+                <div class="user-btn">
+                    <button class="proses-btn more-info">Outer Data</button>
+                    <div>
+                        <button class="proses-btn update">update</button>
+                        <button class="proses-btn delete">delete</button>
+                    </div>
+                </div>
+            </div>
+            <!-- user info card -->
+
+        </div>
+        
+        
+        <div id="todos">
+
+            <!-- <todos navbar>-->
+            <nav style="display: flex; justify-content: end;">
+                <!-- <div></div>
+                <div></div> -->
+                <button class="add-btn">Add</button>
+            </nav>
+            <!-- </todos navbar>-->
+
+            <div class="sections">
+
+                <!-- user todos section -->
+                <div class="todos-section">
+                    <div class="users-todos">
+                        <div class="task">
+                            <label>
+                                <b>title:</b> <input type="text">
+                            </label>
+                            <label>
+                                <b>done:</b> <input type="text">
+                            </label>
+                        </div>
+                        <div class="check-task">
+                            <button id="status">completed</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- user todos section -->
+
+
+
+                <!-- user posts section -->
+                <div class="users-posts">
+                    <div class="post">
+                        <header>
+                            <h1>title</h1>
+                        </header>
+                        <div class="post-content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, minus, velit
+                                accusamus architecto dolores esse, saepe exercitationem consectetur ab animi nulla
+                                nobis modi adipisci aliquid nam debitis veritatis dolore? Eum!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- user posts section -->
+
+
+
+            </div>
+        </div>
+</body>
+
+</html>

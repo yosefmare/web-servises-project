@@ -1,0 +1,145 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ede7e7;
+    height: 50px;
+    position: sticky;
+    top: 0;
+}
+
+.add-btn {
+    margin-right: 15px;
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: none;
+    color: aliceblue;
+    background: rgb(7, 116, 52);
+    cursor: pointer;
+}
+
+.add-btn:active {
+    background: rgb(5, 82, 37);
+}
+
+.content {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 50px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 30px;
+}
+
+.user-detels,
+.users-todos,
+.info,
+.task,
+.post {
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    height: 160px;
+    border-radius: 10px;
+    background: #cbc7c7;
+}
+
+#users,
+.todos-section,
+.users-posts{
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+/* #users,
+.todos-section,
+.users-posts::-webkit-scrollbar{
+    display: none;
+} */
+
+#todos .sections {
+    height: 100vb;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    gap: 30px;
+}
+
+.todos-section,
+.users-posts{
+    height: 50vh;
+}
+
+.info {
+    margin-top: 0;
+}
+
+.user-id {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    border-radius: 50%;
+}
+
+.user-btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.proses-btn {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.update {
+    background: rgb(2, 142, 249);
+}
+
+.more-info {
+    background: rgb(36, 36, 36);
+}
+
+.delete {
+    background: rgb(154, 5, 5);
+}
+
+.check-task {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+#status {
+    padding: 5px 100px;
+    background: green;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.post header{
+    text-align: center;
+    background: rgb(60, 60, 152);
+    color: white;
+}
+
+.post .post-content{
+    text-align: center;
+}
