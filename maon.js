@@ -17,7 +17,7 @@ async function getUsers(){
                 <button class="proses-btn more-info" onmouseover="showMoreData(this)" onclick = "collapseMoreData(this)">Outer Data</button>
                 <div>
                     <button class="proses-btn update">update</button>
-                    <button class="proses-btn delete">delete</button>
+                    <button class="proses-btn delete" onclick= "deleteUser(this)">delete</button>
                 </div>
             </div>
             
@@ -31,8 +31,6 @@ async function getUsers(){
     `
     });
 }
-getUsers()
-
 
 function showMoreData(e){
     e.parentElement.parentElement.childNodes[5].style.display = ""
@@ -40,4 +38,16 @@ function showMoreData(e){
 
 function collapseMoreData(e){
     e.parentElement.parentElement.childNodes[5].style.display = "none"
+}
+
+async function deleteUser(e){
+    const userId = e.parentElement.parentElement.parentElement.childNodes[1].childNodes[1].childNodes[2].value;
+    const response = await fetch(`${url}users/${userId}`,{
+    method: "DELETE"
+})
+const data = await response.json();
+console.log(data);
+
+e.parentElement.parentElement.parentElement.style.display = "none"
+
 }
