@@ -48,7 +48,7 @@ async function deleteUser(e) {
     const data = await response.json();
     console.log(`user: ${userId} Deleted`, data);
 
-    e.parentElement.parentElement.parentElement.style.display = "none"
+    e.parentElement.parentElement.parentElement.remove()
 
 }
 
