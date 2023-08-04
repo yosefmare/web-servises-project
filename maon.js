@@ -1,10 +1,27 @@
-const url = "https://jsonplaceholder.typicode.com/"
+const url = "https://jsonplaceholder.typicode.com/";
+let data = []
+function searchUser(e) {
+    let searchString = e.target.value
+    let filteredUsers =  data.filter((user) => {
+        return (
+            user.name.includes(searchString) ||
+            user.email.includes(searchString)
+        );
+    });
+    displayUsers(filteredUsers)
+    console.log(filteredUsers);
+}
 
-async function getUsers() {
+async function loadUsers() {
     const response = await fetch(`${url}users`);
-    const data = await response.json()
-    data.forEach(user => {
-        document.getElementById('users').innerHTML += `
+    data = await response.json()
+displayUsers(data)
+}
+
+function displayUsers(usersArray){
+    const users = usersArray.map(user => {
+        console.log(user);
+        return  `
         <!-- user info card -->
         <div class="user-detels">
             <div class="info">
@@ -30,7 +47,10 @@ async function getUsers() {
         <!-- user info card -->
     `
     });
+    document.getElementById('all-users').innerHTML = users
 }
+loadUsers()
+
 
 function showMoreData(e) {
     e.parentElement.parentElement.childNodes[5].style.display = ""
@@ -74,7 +94,7 @@ async function updateUser(e) {
     })
 
     const data = await response.json();
-    console.log(data); 
+    console.log(data);
 
 
 }

@@ -8,18 +8,19 @@
     <title>users management</title>
 </head>
 
-<body onload="getUsers()">
+<body>
     <div class="content">
         <div id="users">
 
             <!-- <users navbar>-->
             <nav>
                 <div class="nav-tools" style="margin: 70px;">
-                    <input type="text" placeholder="search">
+                    <input onkeyup="searchUser(event)" type="text" placeholder="search" id="search">
                 </div>
                 <button class="add-btn">Add</button>
             </nav>
             <!-- </users navbar>-->
+            <div id="all-users"></div>
         </div>
         
         
