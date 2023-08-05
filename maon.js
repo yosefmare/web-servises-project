@@ -4,7 +4,7 @@ let data = []
 function searchUser(e) {
     // store the search value in variable then filter the empty array in accordance the search value
     let searchString = e.target.value
-    let filteredUsers =  data.filter((user) => {
+    let filteredUsers = data.filter((user) => {
         return (
             user.name.includes(searchString) ||
             user.email.includes(searchString)
@@ -18,12 +18,12 @@ async function loadUsers() {
     const response = await fetch(`${url}users`);
     data = await response.json();
     // take the response users data as a argument to display it in the page
-displayUsers(data)
+    displayUsers(data)
 }
 
-function displayUsers(usersArray){
+function displayUsers(usersArray) {
     const users = usersArray.map(user => {
-        return  `
+        return `
         <!-- user info card -->
         <div class="user-detels">
             <div class="info">
@@ -51,7 +51,6 @@ function displayUsers(usersArray){
     });
     document.getElementById('all-users').innerHTML = users
 }
-loadUsers()
 
 
 function showMoreData(e) {
@@ -60,6 +59,27 @@ function showMoreData(e) {
 
 function collapseMoreData(e) {
     e.parentElement.parentElement.childNodes[5].style.display = "none"
+}
+
+async function updateRequest(path, updateProperty, userId) {
+
+
+    const updateData = {
+        // Add your dynamic properties here
+        ...updateProperty,
+    };
+
+
+    const response = await fetch(`${url}${path}/${userId}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+    })
+
+    const data = await response.json();
+    console.log(data);
 }
 
 async function deleteUser(e) {
@@ -74,7 +94,7 @@ async function deleteUser(e) {
 
 }
 
-async function updateUser(e) {
+function updateUser(e) {
     //  the user Enter the name and email values
     const userId = e.parentElement.parentElement.parentElement.childNodes[1].childNodes[1].childNodes[2].value;
     let newUserName = prompt("type new user name ")
@@ -83,20 +103,6 @@ async function updateUser(e) {
     //  changing the default user and email values
     e.parentElement.parentElement.parentElement.childNodes[1].childNodes[3].childNodes[2].value = newUserName;
     e.parentElement.parentElement.parentElement.childNodes[1].childNodes[5].childNodes[2].value = newUserEmail;
-    // call API url to update
-    const response = await fetch(`${url}users/${userId}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-            name: newUserName,
-            email: newUserEmail
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
 
-    const data = await response.json();
-    console.log(data);
-
-
+    updateRequest("users", {name: newUserName,email: newUserEmail}, userId)
 }
