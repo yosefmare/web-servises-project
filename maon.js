@@ -62,6 +62,23 @@ async function getUserTodosAndPosts(e) {
     document.getElementById('tasks').innerHTML = "";
     const data = await getUserTodosAndPostsRequest(e.value, "todos")
     data.forEach(todo => {
+       if (todo.completed === true) {
+        document.getElementById('tasks').innerHTML += `
+        <div class="users-todos">
+        <div class="task">
+            <label>
+                <b>title:</b> <input type="text" value="${todo.title}">
+            </label>
+            <label>
+                <b>done:</b> <input type="text"value="${todo.completed}">
+            </label>
+        </div>
+        <div class="check-task" style="display: none;">
+            <button id="status">completed</button>
+        </div>
+    </div>
+        `;
+       } else{
         document.getElementById('tasks').innerHTML += `
         <div class="users-todos">
         <div class="task">
@@ -77,6 +94,7 @@ async function getUserTodosAndPosts(e) {
         </div>
     </div>
         `;
+       }
     });
     getPosts(e)
 }
