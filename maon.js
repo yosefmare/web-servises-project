@@ -62,8 +62,8 @@ async function getUserTodosAndPosts(e) {
     document.getElementById('tasks').innerHTML = "";
     const data = await getUserTodosAndPostsRequest(e.value, "todos")
     data.forEach(todo => {
-       if (todo.completed === true) {
-        document.getElementById('tasks').innerHTML += `
+        if (todo.completed === true) {
+            document.getElementById('tasks').innerHTML += `
         <div class="users-todos">
         <div class="task">
             <label>
@@ -78,8 +78,8 @@ async function getUserTodosAndPosts(e) {
         </div>
     </div>
         `;
-       } else{
-        document.getElementById('tasks').innerHTML += `
+        } else {
+            document.getElementById('tasks').innerHTML += `
         <div class="users-todos">
         <div class="task">
             <label>
@@ -90,11 +90,11 @@ async function getUserTodosAndPosts(e) {
             </label>
         </div>
         <div class="check-task">
-            <button id="status">completed</button>
+            <button onclick="completedTodo(this, ${todo.id})" id="status">completed</button>
         </div>
     </div>
         `;
-       }
+        }
     });
     getPosts(e)
 }
@@ -172,4 +172,10 @@ function updateUser(e) {
     e.parentElement.parentElement.parentElement.childNodes[1].childNodes[5].childNodes[2].value = newUserEmail;
 
     updateRequest("users", { name: newUserName, email: newUserEmail }, userId)
+}
+
+function completedTodo(e, userId){
+    e.parentElement.style.display = "none";
+    e.parentElement.parentElement.childNodes[1].childNodes[3].childNodes[3].value = true;
+    updateRequest("todos", {completed : true}, userId)
 }
