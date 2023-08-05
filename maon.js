@@ -1,6 +1,8 @@
 const url = "https://jsonplaceholder.typicode.com/";
+// create variable data with empty array value 
 let data = []
 function searchUser(e) {
+    // store the search value in variable then filter the empty array in accordance the search value
     let searchString = e.target.value
     let filteredUsers =  data.filter((user) => {
         return (
@@ -8,19 +10,19 @@ function searchUser(e) {
             user.email.includes(searchString)
         );
     });
+    // takes the filtered array as a argument to visible only the users that maching the filter proses
     displayUsers(filteredUsers)
-    console.log(filteredUsers);
 }
 
 async function loadUsers() {
     const response = await fetch(`${url}users`);
-    data = await response.json()
+    data = await response.json();
+    // take the response users data as a argument to display it in the page
 displayUsers(data)
 }
 
 function displayUsers(usersArray){
     const users = usersArray.map(user => {
-        console.log(user);
         return  `
         <!-- user info card -->
         <div class="user-detels">
@@ -78,7 +80,7 @@ async function updateUser(e) {
     let newUserName = prompt("type new user name ")
     let newUserEmail = prompt("type new user email ")
 
-    //  the default user and email values
+    //  changing the default user and email values
     e.parentElement.parentElement.parentElement.childNodes[1].childNodes[3].childNodes[2].value = newUserName;
     e.parentElement.parentElement.parentElement.childNodes[1].childNodes[5].childNodes[2].value = newUserEmail;
     // call API url to update
