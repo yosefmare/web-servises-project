@@ -146,3 +146,9 @@ nav {
 .post .post-content {
     text-align: center;
 }
+
+#userId:focus{
+    background: orangered;
+    color: aliceblue;
+    font-weight: bolder;
+}

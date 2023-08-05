@@ -27,7 +27,7 @@ function displayUsers(usersArray) {
         <!-- user info card -->
         <div class="user-detels">
             <div class="info">
-                <label><b>id:</b> <input onclick="getUserTodosAndPosts(this)" class="user-id" type="button" value="${user.id}"></label>
+                <label><b>id:</b> <input id="userId" onclick="getUserTodosAndPosts(this)" class="user-id" type="button" value="${user.id}"></label>
                 <label><b>name:</b> <input type="text" value="${user.name}"></label>
                 <label><b>email:</b> <input type="text" value="${user.email}"></label>
             </div>
