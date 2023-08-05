@@ -27,7 +27,7 @@ function displayUsers(usersArray) {
         <!-- user info card -->
         <div class="user-detels">
             <div class="info">
-                <label><b>id:</b> <input class="user-id" type="button" value="${user.id}"></label>
+                <label><b>id:</b> <input onclick="getUserTodosAndPosts(this)" class="user-id" type="button" value="${user.id}"></label>
                 <label><b>name:</b> <input type="text" value="${user.name}"></label>
                 <label><b>email:</b> <input type="text" value="${user.email}"></label>
             </div>
@@ -50,6 +50,55 @@ function displayUsers(usersArray) {
     `
     });
     document.getElementById('all-users').innerHTML = users
+}
+
+async function getUserTodosAndPostsRequest(userId, path) {
+    const response = await fetch(`${url}${path}?userId=${userId}`);
+    const data = await response.json();
+    return data
+}
+
+async function getUserTodosAndPosts(e) {
+    document.getElementById('tasks').innerHTML = "";
+    const data = await getUserTodosAndPostsRequest(e.value, "todos")
+    data.forEach(todo => {
+        document.getElementById('tasks').innerHTML += `
+        <div class="users-todos">
+        <div class="task">
+            <label>
+                <b>title:</b> <input type="text" value="${todo.title}">
+            </label>
+            <label>
+                <b>done:</b> <input type="text"value="${todo.completed}">
+            </label>
+        </div>
+        <div class="check-task">
+            <button id="status">completed</button>
+        </div>
+    </div>
+        `;
+    });
+    getPosts(e)
+}
+
+async function getPosts(e) {
+    document.getElementById('posts').innerHTML = "";
+
+    const data = await getUserTodosAndPostsRequest(e.value, "posts")
+    data.forEach(post => {
+        document.getElementById('posts').innerHTML += `
+    <div class="post">
+                        <header>
+                            <h3>${post.title}</h3>
+                        </header>
+                        <div class="post-content">
+                            <p>${post.body}</p>
+                        </div>
+                    </div>
+    `;
+
+    });
+
 }
 
 
@@ -104,5 +153,5 @@ function updateUser(e) {
     e.parentElement.parentElement.parentElement.childNodes[1].childNodes[3].childNodes[2].value = newUserName;
     e.parentElement.parentElement.parentElement.childNodes[1].childNodes[5].childNodes[2].value = newUserEmail;
 
-    updateRequest("users", {name: newUserName,email: newUserEmail}, userId)
+    updateRequest("users", { name: newUserName, email: newUserEmail }, userId)
 }
