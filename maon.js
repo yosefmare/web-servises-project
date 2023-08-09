@@ -33,7 +33,7 @@ function displayUsers(usersArray) {
             </div>
             
             <div class="user-btn">
-                <button class="proses-btn more-info" onmouseover="showMoreData(this)" onclick = "collapseMoreData(this)">Outer Data</button>
+                <button class="proses-btn more-info" onmouseover="showMoreData(this)" onclick = "collapseMoreData(this)">Other Data</button>
                 <div>
                     <button class="proses-btn update" onclick = "updateUser(this)">update</button>
                     <button class="proses-btn delete" onclick= "deleteUser(this)">delete</button>
